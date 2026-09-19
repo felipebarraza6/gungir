@@ -235,6 +235,13 @@ export function GoldQuoteForm({ branchSlug }: Props) {
         </label>
       </div>
 
+      {!branchSlug && (
+        <p className="mb-3 rounded-lg border border-warning/30 bg-warning/10 px-3 py-2 text-xs text-warning">
+          Falta <code>NEXT_PUBLIC_GUNGIR_BRANCH_SLUG</code> (ej. casa-oro). Sin slug el envío a
+          Yggdra no resuelve la Branch.
+        </p>
+      )}
+
       {submitMsg && (
         <p
           className={cn(

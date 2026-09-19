@@ -1,12 +1,17 @@
-import { ShellPlaceholder } from "@/components/shell-placeholder";
+import { Suspense } from "react";
+import { LoginForm } from "./login-form";
 
 export default function LoginPage() {
   return (
-    <ShellPlaceholder
-      title="Entrar"
-      surface="login"
-      description="Login Yggdra (Token). Clientes van a /cuenta; staff a /local o /admin según rol."
-      pendingNote="Se cablea a /api/accounts/ login_complete como en Frig."
-    />
+    <div className="relative flex min-h-dvh items-center justify-center px-4">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(212,160,23,0.12),transparent_50%)]" />
+      <Suspense
+        fallback={
+          <div className="text-sm text-muted-foreground">Cargando login…</div>
+        }
+      >
+        <LoginForm />
+      </Suspense>
+    </div>
   );
 }
