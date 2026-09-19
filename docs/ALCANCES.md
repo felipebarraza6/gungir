@@ -1,8 +1,15 @@
 # Gungir — Alcances (Yggdra 100%)
 
-**Gungir** es comercio general sobre Yggdra: catálogo, cotizaciones, clientes, inventario, finanzas y BI. Sin gastronomía. El prototipo visible es un **negocio que compra oro** (landing + cotizador por Branch).
+**Gungir** es comercio general sobre Yggdra: catálogo, cotizaciones, clientes, inventario, finanzas y BI. Sin gastronomía.
 
 Nombre: **Gungir** (más fácil de buscar que Gungnir).
+
+**Separación importante**
+
+| Repo | Rol |
+|---|---|
+| [`gungir`](https://github.com/felipebarraza6/gungir) | Producto general (Public / Local / Admin) |
+| [`cotizador-oro`](https://github.com/felipebarraza6/cotizador-oro) | Landing vertical de demo para un cliente (GitHub Pages). **No es Gungir.** Consume `/api/public/*` de Yggdra. |
 
 ---
 

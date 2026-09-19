@@ -1,8 +1,8 @@
 export const GUNGIR_FALLBACK = {
   appName: "Gungir",
-  headline: "Cotiza tu oro en 30 segundos",
+  headline: "Tu negocio general, en una sola web",
   subhead:
-    "Precio del día, oferta clara y seguimiento en tu cuenta. Sin app que instalar — todo sobre Yggdra.",
-  cta: "Cotizar ahora",
+    "Catálogo, cotizaciones, clientes, caja e inventario — sin gastronomía. Public, Local y Admin sobre Yggdra.",
+  cta: "Ver cómo opera",
   contactEmail: "hola@gungir.cl",
 };

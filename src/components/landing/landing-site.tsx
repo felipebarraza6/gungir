@@ -7,67 +7,71 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   Building2,
+  ExternalLink,
   FileText,
+  LayoutDashboard,
   LogIn,
-  Scale,
   ShieldCheck,
   Sparkles,
-  Wallet,
+  Store,
+  Users,
 } from "lucide-react";
 import { fetchLandingConfig } from "@/lib/api/landing";
 import { GUNGIR_FALLBACK } from "@/content/landing";
 import { HeroPlexus } from "@/components/landing/hero-plexus";
-import { GoldQuoteForm } from "@/components/landing/gold-quote-form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const GROUP = process.env.NEXT_PUBLIC_GUNGIR_GROUP ?? "gungir";
-const BRANCH_SLUG = process.env.NEXT_PUBLIC_GUNGIR_BRANCH_SLUG || undefined;
+/** Demo de landing vertical (cotizador oro) — proyecto aparte en GitHub Pages. */
+const DEMO_COTZADOR_URL =
+  process.env.NEXT_PUBLIC_DEMO_COTIZADOR_URL ??
+  "https://felipebarraza6.github.io/cotizador-oro/";
 
 const STEPS = [
   {
-    icon: Scale,
-    title: "Cotizá al instante",
-    text: "Metal, ley y gramos. Oferta con precio del día y spread transparente.",
+    icon: Store,
+    title: "Public",
+    text: "Landing white-label por Branch. El cliente cotiza o compra sin instalar app.",
   },
   {
     icon: FileText,
-    title: "Seguí en tu cuenta",
-    text: "Autogestión: estado, vigencia y PDF sin llamar al local.",
+    title: "Local",
+    text: "Cola del día: cotis, caja, catálogo e inventario de la sucursal.",
   },
   {
-    icon: Wallet,
-    title: "Cobrás en el Local",
-    text: "El staff acepta, paga en caja y registra el metal en inventario Yggdra.",
+    icon: LayoutDashboard,
+    title: "Admin",
+    text: "Organización, usuarios, marca y módulos. Super Admin de plataforma: pendiente.",
   },
 ];
 
 const SURFACES = [
   {
-    href: "/#cotizador",
+    href: "/cuenta",
     label: "Public",
-    title: "Landing + cotizador",
-    text: "Visitantes y clientes. Sin instalar nada.",
+    title: "Autogestión del cliente",
+    text: "Mis cotis, estado y PDF.",
   },
   {
     href: "/local",
     label: "Local",
     title: "Operar la sucursal",
-    text: "Cola de cotis, caja y precio del día.",
+    text: "Staff del negocio, día a día.",
   },
   {
     href: "/admin",
     label: "Admin",
     title: "Organización",
-    text: "Sucursales, usuarios y marca white-label.",
+    text: "Dueño de la org en Yggdra.",
   },
 ];
 
 export function LandingSite() {
   const reduce = useReducedMotion();
   const { data, isError } = useQuery({
-    queryKey: ["landing-config", GROUP, BRANCH_SLUG],
-    queryFn: () => fetchLandingConfig(GROUP, BRANCH_SLUG),
+    queryKey: ["landing-config", GROUP],
+    queryFn: () => fetchLandingConfig(GROUP),
     retry: false,
     staleTime: 60_000,
   });
@@ -83,17 +87,17 @@ export function LandingSite() {
           {
             icon: "shield",
             title: "100% Yggdra",
-            description: "Org + Branch reales. Sin backend paralelo.",
+            description: "Org + Branch. Sin backend paralelo.",
           },
           {
             icon: "zap",
-            title: "Cotización viva",
-            description: "Preview y alta pública contra la API.",
+            title: "Módulos a la carta",
+            description: "Sales, catálogo, clientes, finance, analytics.",
           },
           {
             icon: "users",
-            title: "Tres superficies",
-            description: "Public, Local y Admin — roles claros.",
+            title: "Landings que consumen",
+            description: "Cualquier landing estática puede pegarle a la API pública.",
           },
         ];
 
@@ -125,13 +129,16 @@ export function LandingSite() {
         </Link>
         <nav className="flex items-center gap-2 sm:gap-3">
           <Link
-            href="/cuenta"
+            href="/local"
+            className="hidden text-sm text-muted-foreground transition hover:text-foreground md:inline"
+          >
+            Local
+          </Link>
+          <Link
+            href="/admin"
             className="hidden text-sm text-muted-foreground transition hover:text-foreground sm:inline"
           >
-            Mi cuenta
-          </Link>
-          <Link href="/local" className="hidden text-sm text-muted-foreground transition hover:text-foreground md:inline">
-            Local
+            Admin
           </Link>
           <Link href="/login">
             <Button variant="ghost" className="gap-1.5 px-3">
@@ -142,7 +149,7 @@ export function LandingSite() {
         </nav>
       </header>
 
-      <section className="relative z-10 mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-4 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:pt-10">
+      <section className="relative z-10 mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 lg:pt-16">
         <motion.div
           {...(reduce
             ? {}
@@ -151,36 +158,39 @@ export function LandingSite() {
                 animate: { opacity: 1, y: 0 },
                 transition: { duration: 0.32 },
               })}
-          className="flex flex-col justify-center"
+          className="mx-auto max-w-2xl text-center"
         >
-          <p className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-primary">
+          <p className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-primary">
             <Sparkles className="size-3.5" aria-hidden />
             {isError || !data
-              ? "Fallback local · seed Yggdra para copy vivo"
-              : "Precio del día · Branch Yggdra"}
+              ? "Producto general · Yggdra"
+              : "PlanGroup gungir · white-label"}
           </p>
           <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
             {headline}
           </h1>
-          <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
             {subhead}
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#cotizador">
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link href="/login">
               <Button>
                 {cta}
                 <ArrowRight className="size-4" />
               </Button>
-            </a>
-            <Link href="/cuenta">
-              <Button variant="outline">Ver mis cotizaciones</Button>
             </Link>
+            <a href={DEMO_COTZADOR_URL} target="_blank" rel="noreferrer">
+              <Button variant="outline">
+                Demo cotizador (cliente)
+                <ExternalLink className="size-4" />
+              </Button>
+            </a>
           </div>
-          <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
+          <ul className="mx-auto mt-10 max-w-md space-y-2 text-left text-sm text-muted-foreground">
             {[
-              "Oferta clara con ley, peso y spread de compra",
-              "Seguimiento en tu cuenta sin llamar al local",
-              "Operación 100% sobre Yggdra (org + branch)",
+              "No es gastronomía: comercio general sobre la misma API que Frig",
+              "Landings aparte (GitHub Pages, dominio del cliente) consumen /api/public/*",
+              "Una Organization + Branch en Yggdra = un negocio listo",
             ].map((line) => (
               <li key={line} className="flex items-start gap-2">
                 <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
@@ -189,24 +199,12 @@ export function LandingSite() {
             ))}
           </ul>
         </motion.div>
-
-        <motion.div
-          {...(reduce
-            ? {}
-            : {
-                initial: { opacity: 0, y: 12 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.32, delay: 0.07 },
-              })}
-        >
-          <GoldQuoteForm branchSlug={BRANCH_SLUG} />
-        </motion.div>
       </section>
 
       <section className="relative z-10 border-t border-border/50 bg-background/70 py-14 backdrop-blur-sm">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <motion.h2 {...fade()} className="font-display text-2xl font-semibold tracking-tight">
-            Cómo funciona
+            Tres superficies
           </motion.h2>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {STEPS.map((step, i) => (
@@ -227,7 +225,7 @@ export function LandingSite() {
       <section className="relative z-10 py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <motion.h2 {...fade()} className="font-display text-2xl font-semibold tracking-tight">
-            Tres superficies, un solo Yggdra
+            Entrá a operar
           </motion.h2>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {SURFACES.map((s, i) => (
@@ -249,7 +247,7 @@ export function LandingSite() {
       <section className="relative z-10 border-t border-border/50 bg-muted/30 py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <motion.h2 {...fade()} className="font-display text-2xl font-semibold tracking-tight">
-            Capacidad real
+            Capacidad
           </motion.h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f, i) => (
@@ -264,6 +262,34 @@ export function LandingSite() {
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            {...fade(0.1)}
+            className="mt-10 rounded-2xl border border-primary/25 bg-card/80 p-6"
+          >
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wide text-primary">
+                  Prototipo para cliente
+                </p>
+                <h3 className="mt-1 font-display text-lg font-semibold">
+                  Landing cotizador (proyecto aparte)
+                </h3>
+                <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+                  No vive dentro de Gungir. Es una web estática en GitHub Pages que consume{" "}
+                  <code className="text-xs">/api/public/quote-preview/</code> y{" "}
+                  <code className="text-xs">/api/public/quotes/</code> de Yggdra — el mismo contrato
+                  que usaría cualquier landing de un tenant.
+                </p>
+              </div>
+              <a href={DEMO_COTZADOR_URL} target="_blank" rel="noreferrer">
+                <Button>
+                  Abrir demo
+                  <ExternalLink className="size-4" />
+                </Button>
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -295,9 +321,9 @@ export function LandingSite() {
             <Link href="/cuenta" className="hover:text-foreground">
               Cuenta
             </Link>
-            <Link href="/super" className="opacity-60 hover:text-foreground" title="Pendiente">
-              Super Admin
-            </Link>
+            <a href={DEMO_COTZADOR_URL} className="hover:text-foreground" target="_blank" rel="noreferrer">
+              Cotizador demo
+            </a>
           </div>
         </div>
       </footer>
