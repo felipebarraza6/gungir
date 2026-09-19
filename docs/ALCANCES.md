@@ -56,11 +56,12 @@ Hoy el front puede cotizar en cliente con fallback. Para el producto serio hace 
 
 ### 4.1 Crítico para el cotizador público
 
-| Gap | Hoy | Ideal |
-|---|---|---|
-| Preview de oferta anónima | No hay | `GET/POST /api/public/quote-preview/` por Host/slug: metal, ley, peso → desglose + total + vigencia. Throttle. |
-| Crear cotización pública | `/api/sales/quotations/` es staff | `POST /api/public/quotes/` crea Client + Quotation (`is_quotation=True`) en la Branch. Sin `branch` en body. |
-| Vigencia / snapshot de precio | Parcial en Order | Guardar `quoted_at`, `expires_at`, precio_ref y spread usados (auditoría). |
+| Gap | Estado |
+|---|---|
+| `POST /api/public/quote-preview/` | **Implementado** en `yggdra_infra` (`sales.views.public_quotes`) |
+| `POST /api/public/quotes/` | **Implementado** — crea Client + `Order(is_quotation=True)` |
+| Seed Org+Branch | `python manage.py seed_gungir` |
+| Vigencia / snapshot | En `observation` + `expires_at` en la respuesta; campos dedicados = mejora futura |
 
 ### 4.2 Autogestión del cliente
 

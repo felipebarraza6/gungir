@@ -1,16 +1,31 @@
-# Seed sugerido — Org + Branch Gungir (oro)
+# Seed — Org + Branch Gungir (oro)
 
-Gungir **no** tiene backend propio. En Yggdra:
+Gungir **no** tiene backend propio. En Yggdra (`yggdra_infra`):
 
-1. Crear **Organization** `Gungir` (o el nombre del negocio de compra de oro).
-2. Crear **Branch** (sucursal) del local, con:
-   - `login_slug` (ej. `casa-oro`)
-   - theme (primary oro `#d4a017`, dark)
-   - dominio custom opcional
-3. Asignar un **plan** sin módulos gastronómicos (`tables`, `nutrition`, `production` apagados). Encender: `dashboard`, `config`, `sales`, `product_catalog`, `customers`, `inventory`, `finance`, `analytics`.
-4. Catálogo: productos metal (Au/Ag/Pt) unidad **gramo**, precios de referencia.
-5. Roles: staff Local, owner Admin, clientes con `Client.user` para `/cuenta`.
+```bash
+python manage.py seed_gungir
+python manage.py seed_gungir --org "Casa de Oro" --slug casa-oro \
+  --admin-email admin@casaoro.cl --admin-password '…'
+```
 
-`PlanGroup` slug `gungir` solo si querés `GET /api/public/landing-config/?group=gungir` con copy de landing. Para el prototipo alcanza resolver por `?slug=` o `Host` de la Branch.
+Crea/actualiza:
 
-Endpoints públicos de coti: ver `ALCANCES.md` §4.1 — implementar en `yggdra_infra`, no aquí.
+1. **Organization** + owner  
+2. **PlanGroup** `gungir` (landing SaaS)  
+3. **Branch** del local  
+4. **BranchThemeConfig** con `login_slug`, primary `#d4a017`, `config_json.metal_buy`  
+5. **BranchUser** OWNER  
+
+Front:
+
+```env
+NEXT_PUBLIC_GUNGIR_BRANCH_SLUG=casa-oro
+```
+
+Endpoints públicos (ya en Yggdra):
+
+- `POST /api/public/quote-preview/`
+- `POST /api/public/quotes/`
+- `GET /api/public/landing-config/?slug=casa-oro` o `?group=gungir`
+
+Pendiente: Super Admin de orgs/planes (`ALCANCES.md` §5) y scope de cotis del cliente (§4.2).
