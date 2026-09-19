@@ -87,7 +87,7 @@ export function GoldQuoteForm({ branchSlug }: Props) {
       const msg =
         err instanceof ApiError
           ? err.message
-          : "No se pudo enviar. Revisá la conexión con Yggdra.";
+          : "No se pudo enviar. Revisá la conexión.";
       setSubmitMsg({ type: "err", text: msg });
     } finally {
       setSubmitting(false);
@@ -194,7 +194,7 @@ export function GoldQuoteForm({ branchSlug }: Props) {
           <p className="mt-2 text-xs text-muted-foreground">
             Ref. {formatCLP(preview.price_ref_clp_per_g)}/g · ley {(preview.purity_factor * 100).toFixed(1)}%
             · spread {(preview.spread * 100).toFixed(0)}%
-            {preview.source === "local-fallback" ? " · preview local" : " · Yggdra"}
+            {preview.source === "local-fallback" ? " · estimación" : " · precio del día"}
           </p>
         )}
         <p className="mt-1 text-[11px] text-muted-foreground">
@@ -238,7 +238,7 @@ export function GoldQuoteForm({ branchSlug }: Props) {
       {!branchSlug && (
         <p className="mb-3 rounded-lg border border-warning/30 bg-warning/10 px-3 py-2 text-xs text-warning">
           Falta <code>NEXT_PUBLIC_GUNGIR_BRANCH_SLUG</code> (ej. casa-oro). Sin slug el envío a
-          Yggdra no resuelve la Branch.
+          no se resuelve la sucursal.
         </p>
       )}
 

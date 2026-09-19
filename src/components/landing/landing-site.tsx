@@ -63,7 +63,7 @@ const SURFACES = [
     href: "/admin",
     label: "Admin",
     title: "Organización",
-    text: "Dueño de la org en Yggdra.",
+    text: "Dueño de la organización y la marca.",
   },
 ];
 
@@ -86,18 +86,18 @@ export function LandingSite() {
       : [
           {
             icon: "shield",
-            title: "100% Yggdra",
-            description: "Org + Branch. Sin backend paralelo.",
+            title: "Todo en Gungir",
+            description: "Una org, sucursales y módulos sin apps sueltas.",
           },
           {
             icon: "zap",
             title: "Módulos a la carta",
-            description: "Sales, catálogo, clientes, finance, analytics.",
+            description: "Ventas, catálogo, clientes, finanzas, analytics.",
           },
           {
             icon: "users",
-            title: "Landings que consumen",
-            description: "Cualquier landing estática puede pegarle a la API pública.",
+            title: "Landings del negocio",
+            description: "Webs de cliente que cotizan y se autogestionan.",
           },
         ];
 
@@ -163,8 +163,8 @@ export function LandingSite() {
           <p className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-primary">
             <Sparkles className="size-3.5" aria-hidden />
             {isError || !data
-              ? "Producto general · Yggdra"
-              : "PlanGroup gungir · white-label"}
+              ? "Producto general · Gungir"
+              : "Gungir · white-label"}
           </p>
           <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
             {headline}
@@ -188,9 +188,9 @@ export function LandingSite() {
           </div>
           <ul className="mx-auto mt-10 max-w-md space-y-2 text-left text-sm text-muted-foreground">
             {[
-              "No es gastronomía: comercio general sobre la misma API que Frig",
-              "Landings aparte (GitHub Pages, dominio del cliente) consumen /api/public/*",
-              "Una Organization + Branch en Yggdra = un negocio listo",
+              "No es gastronomía: comercio general multi-sucursal",
+              "Landings del cliente (dominio propio o Pages) conectadas a Gungir",
+              "Una organización + sucursal = un negocio listo",
             ].map((line) => (
               <li key={line} className="flex items-start gap-2">
                 <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
@@ -276,10 +276,8 @@ export function LandingSite() {
                   Landing cotizador (proyecto aparte)
                 </h3>
                 <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-                  No vive dentro de Gungir. Es una web estática en GitHub Pages que consume{" "}
-                  <code className="text-xs">/api/public/quote-preview/</code> y{" "}
-                  <code className="text-xs">/api/public/quotes/</code> de Yggdra — el mismo contrato
-                  que usaría cualquier landing de un tenant.
+                  Web aparte para mandarle al cliente. Cotiza en vivo y se conecta a Gungir por
+                  detrás — el visitante solo ve la marca del negocio.
                 </p>
               </div>
               <a href={DEMO_COTZADOR_URL} target="_blank" rel="noreferrer">
@@ -301,7 +299,7 @@ export function LandingSite() {
       >
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            {brandName} · powered by Yggdra ·{" "}
+            {brandName} ·{" "}
             <a
               className="underline-offset-2 hover:text-foreground hover:underline"
               href="https://github.com/felipebarraza6/gungir"
