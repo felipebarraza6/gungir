@@ -15,9 +15,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Gungir — Cotizá y gestioná tu negocio sobre Yggdra",
+  title: "Gungir — Gestión comercial general",
   description:
-    "Landing, cotizador y operación comercial general. Public, Local y Admin — 100% Yggdra.",
+    "Ventas, cotizaciones, inventario, clientes y finanzas. Multi-sucursal, sin gastronomía.",
   applicationName: "Gungir",
 };
 
