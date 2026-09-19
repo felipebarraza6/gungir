@@ -63,3 +63,27 @@ body {
 ::selection {
   background: color-mix(in srgb, var(--brand-primary) 40%, transparent);
 }
+
+/* Landing atmosphere */
+.landing-grid {
+  background-image:
+    linear-gradient(rgba(212, 160, 23, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+}
+
+.landing-section-glow {
+  box-shadow: 0 0 40px rgba(212, 160, 23, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+

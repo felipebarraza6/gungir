@@ -16,9 +16,14 @@ export const GUNGIR_FALLBACK = {
   appName: "Gungir",
   headline: "Tu negocio completo, en una sola web",
   subhead:
-    "Ventas, cotizaciones, inventario, clientes y finanzas. Sin gastronomía: comercio general multi-sucursal.",
-  cta: "Empezar ahora",
+    "Ventas, cotizaciones, inventario, clientes y finanzas. Comercio general multi-sucursal — sin instalar nada.",
+  cta: "Probar demo",
   contactEmail: "hola@gungir.cl",
+  points: [
+    "Cotizaciones y ventas en el mismo flujo",
+    "Inventario y caja al día",
+    "Tu marca en cada sucursal",
+  ],
 };
 
 export interface LandingFeature {
@@ -27,7 +32,6 @@ export interface LandingFeature {
   description: string;
 }
 
-/** Qué hace Gungir hoy — copy para el cliente final. */
 export const LANDING_FEATURES: LandingFeature[] = [
   {
     icon: Zap,
@@ -37,22 +41,22 @@ export const LANDING_FEATURES: LandingFeature[] = [
   {
     icon: FileText,
     title: "Cotizaciones",
-    description: "Presupuestos convertibles a venta, con PDF y seguimiento de estado.",
+    description: "Presupuestos con PDF, vigencia y conversión a venta.",
   },
   {
     icon: Package,
-    title: "Catálogo de productos",
+    title: "Catálogo",
     description: "Productos, categorías, precios y fotos por sucursal.",
   },
   {
     icon: Warehouse,
     title: "Inventario",
-    description: "Stock, movimientos y alertas de quiebre en tiempo real.",
+    description: "Stock, movimientos y alertas de quiebre.",
   },
   {
     icon: Users,
     title: "Clientes",
-    description: "Fichas, historial de compras y área de autogestión.",
+    description: "Fichas, historial y portal de autogestión.",
   },
   {
     icon: Banknote,
@@ -61,23 +65,23 @@ export const LANDING_FEATURES: LandingFeature[] = [
   },
   {
     icon: ShoppingCart,
-    title: "Compras y proveedores",
-    description: "Órdenes de compra y recepción de mercadería.",
+    title: "Compras",
+    description: "Proveedores, órdenes de compra y recepción.",
   },
   {
     icon: Store,
     title: "Multi-sucursal",
-    description: "Varios locales desde una sola cuenta, cada uno con su marca.",
+    description: "Varios locales, una cuenta, marca por sucursal.",
   },
   {
     icon: BarChart3,
     title: "Reportes",
-    description: "Ventas, stock y caja con visión clara del negocio.",
+    description: "Ventas, stock y caja con visión clara.",
   },
   {
     icon: ShieldCheck,
-    title: "Roles y permisos",
-    description: "Dueño, encargado y cajero con acceso justo a lo que necesitan.",
+    title: "Roles",
+    description: "Dueño, encargado y cajero con permisos justos.",
   },
 ];
 
@@ -111,7 +115,7 @@ export const LANDING_PLANS: LandingPlan[] = [
       "10 usuarios",
       "Todo Emprendimiento",
       "Caja y finanzas",
-      "Clientes y autogestión",
+      "Clientes",
       "Soporte prioritario",
     ],
     highlighted: true,
@@ -123,15 +127,56 @@ export const LANDING_PLANS: LandingPlan[] = [
     tagline: "Para varias sucursales",
     priceUf: 22,
     resources: [
-      "Sucursales amplias",
+      "Más sucursales",
       "Usuarios según plan",
       "Todo Negocio",
       "Reportes avanzados",
-      "White-label por local",
+      "White-label",
       "Onboarding asistido",
     ],
   },
 ];
 
 export const LANDING_PRICING_NOTE =
-  "Precios en UF / mes. Todos los planes incluyen los módulos del producto. La integración se cotiza aparte.";
+  "Precios en UF / mes. Todos los planes incluyen los módulos del producto.";
+
+/** Demos públicas — como Frig, por rubro. */
+export interface LandingDemo {
+  slug: string;
+  name: string;
+  rubro: string;
+  highlight: string;
+  color: string;
+  user: string;
+  password: string;
+}
+
+export const LANDING_DEMOS: LandingDemo[] = [
+  {
+    slug: "retail",
+    name: "Almacén Norte",
+    rubro: "Retail",
+    highlight: "Catálogo + stock + caja",
+    color: "#d4a017",
+    user: "retail@demo.gungir.cl",
+    password: "Demo2026!",
+  },
+  {
+    slug: "servicios",
+    name: "Taller Precisión",
+    rubro: "Servicios",
+    highlight: "Cotizaciones → venta",
+    color: "#7dd3c0",
+    user: "servicios@demo.gungir.cl",
+    password: "Demo2026!",
+  },
+  {
+    slug: "distribucion",
+    name: "Distribuidora Sur",
+    rubro: "Distribución",
+    highlight: "Multi-sucursal + compras",
+    color: "#a78bfa",
+    user: "dist@demo.gungir.cl",
+    password: "Demo2026!",
+  },
+];
