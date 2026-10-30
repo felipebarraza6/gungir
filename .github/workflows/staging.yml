@@ -1,6 +1,6 @@
 name: Staging (GitHub Pages)
 
-# Gungir no tiene host propio. `dev` y `production` publican el mismo sitio
+# Gungir no tiene host propio. `staging` y `production` publican el mismo sitio
 # https://<owner>.github.io/gungir/. El último push reemplaza al otro.
 # `main` no despliega.
 #
@@ -8,7 +8,7 @@ name: Staging (GitHub Pages)
 
 on:
   push:
-    branches: [dev]
+    branches: [staging]
   workflow_dispatch:
 
 permissions:
