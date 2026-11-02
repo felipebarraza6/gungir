@@ -140,7 +140,7 @@ export const LANDING_PLANS: LandingPlan[] = [
 export const LANDING_PRICING_NOTE =
   "Precios en UF / mes. Todos los planes incluyen los módulos del producto.";
 
-/** Demos públicas — como Frig, por rubro. */
+/** Demos públicas por rubro. */
 export interface LandingDemo {
   slug: string;
   name: string;

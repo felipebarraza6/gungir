@@ -2,7 +2,7 @@
 
 ## Qué es
 
-Gungir es el cliente de comercio general sobre la API Ginnung, sin el vertical gastronómico. Hoy el producto visible es una landing y un cotizador (compra de oro) por sucursal, con superficies Public, Local y Admin. Super Admin sigue pendiente en la ruta `/super`.
+Gungir es el cliente de comercio general sobre la API Ginnung. Hoy el producto visible es una landing y un cotizador (compra de oro) por sucursal, con superficies Public, Local y Admin. Super Admin sigue pendiente en la ruta `/super`.
 
 ## A quién sirve
 
