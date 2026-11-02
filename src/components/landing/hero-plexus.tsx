@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-/** Atmósfera de datos; se re-tiñe con --brand-primary (igual idea que Frig). */
+/** Atmósfera de datos; se re-tiñe con --brand-primary. */
 export function HeroPlexus({ className }: { className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
 

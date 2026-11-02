@@ -17,7 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Gungir — Gestión comercial general",
   description:
-    "Ventas, cotizaciones, inventario, clientes y finanzas. Multi-sucursal, sin gastronomía.",
+    "Ventas, cotizaciones, inventario, clientes y finanzas. Multi-sucursal.",
   applicationName: "Gungir",
 };
 

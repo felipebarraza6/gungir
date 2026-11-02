@@ -1,6 +1,6 @@
 # Gungir — Alcances (Yggdra 100%)
 
-**Gungir** es comercio general sobre Yggdra: catálogo, cotizaciones, clientes, inventario, finanzas y BI. Sin gastronomía.
+**Gungir** es comercio general sobre Yggdra: catálogo, cotizaciones, clientes, inventario, finanzas y BI.
 
 Nombre: **Gungir** (más fácil de buscar que Gungnir).
 
@@ -51,7 +51,6 @@ Listo para construir / en este repo:
 Fuera del prototipo:
 
 - Ecommerce / carrito.
-- KDS, mesas, recetas, nutrición (nunca).
 - Super Admin de todas las orgs (pendiente explícito).
 - BI completo (después de que cotis + caja vivan).
 
@@ -116,17 +115,17 @@ Objetivo: gestionar al **100%** las Organizations, sus planes, qué módulos pue
 | White-label global por org | Theme / dominio |
 | Ver uso (sucursales, usuarios, cotis) | Analytics + audit |
 
-**No entra en el prototipo oro.** Cuando toque: superficie `/super` en Gungir **o** reutilizar pantallas de org/planes de Frig/Muninn contra los mismos endpoints. Priorizar **no duplicar** lógica: el back ya tiene orgs y planes; falta la UI de plataforma unificada.
+**No entra en el prototipo oro.** Cuando toque: superficie `/super` en Gungir **o** reutilizar pantallas de org/planes de otros proyectos contra los mismos endpoints. Priorizar **no duplicar** lógica: el back ya tiene orgs y planes; falta la UI de plataforma unificada.
 
 Hasta que exista Super Admin, las orgs/planes del prototipo se siembran / configuran por management command o Django admin / scripts en Yggdra.
 
 ---
 
-## 6. Stack front (alineado a Frig)
+## 6. Stack front
 
 Next.js 16 (`output: "export"`) · React 19 · TypeScript · Tailwind v4 · Framer Motion · TanStack Query · Zustand · API Yggdra.
 
-Identidad: carbón + acento oro. Misma lógica de motion que Frig, otra piel.
+Identidad: carbón + acento oro.
 
 ---
 
@@ -138,7 +137,6 @@ Identidad: carbón + acento oro. Misma lógica de motion que Frig, otra piel.
 - [ ] `/cuenta` muestra cotis del cliente cuando §4.2 esté
 - [ ] `/local` y `/admin` shells navegables
 - [ ] Super Admin documentado como pendiente (este doc)
-- [ ] Cero módulos gastronómicos en menú
 
 ---
 

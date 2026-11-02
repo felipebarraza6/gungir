@@ -47,7 +47,13 @@ export function GoldQuoteForm({ branchSlug }: Props) {
 
   useEffect(() => {
     let cancelled = false;
-    setPreviewing(true);
+    // Para evitar advertencias de React sobre actualizaciones síncronas en useEffect,
+    // extraemos la actualización inicial a un setTimeout inmediato o la dejamos antes
+    // del timeout de debounce. En este caso es parte del debounce.
+    window.setTimeout(() => {
+      if (!cancelled) setPreviewing(true);
+    }, 0);
+
     const handle = window.setTimeout(async () => {
       try {
         const result = await fetchQuotePreview(input);
@@ -58,6 +64,7 @@ export function GoldQuoteForm({ branchSlug }: Props) {
         if (!cancelled) setPreviewing(false);
       }
     }, 180);
+
     return () => {
       cancelled = true;
       window.clearTimeout(handle);
