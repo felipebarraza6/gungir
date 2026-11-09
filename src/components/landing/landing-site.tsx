@@ -24,6 +24,7 @@ import {
   LANDING_PRICING_NOTE,
   type LandingPlan,
 } from "@/content/landing";
+import { GoldQuoteForm } from "@/components/landing/gold-quote-form";
 import { HeroPlexus } from "@/components/landing/hero-plexus";
 import { GungirMark } from "@/components/landing/gungir-mark";
 import { ProductPreview } from "@/components/landing/product-preview";
@@ -33,6 +34,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const GROUP = process.env.NEXT_PUBLIC_GUNGIR_GROUP ?? "gungir";
+const BRANCH_SLUG = process.env.NEXT_PUBLIC_GUNGIR_BRANCH_SLUG ?? "casa-oro";
 
 const NAV = [
   { href: "#producto", label: "Producto" },
@@ -430,6 +432,9 @@ export function LandingSite() {
               subtitle="Pedí una demo o escribinos. Te armamos la cuenta y la primera sucursal."
               align="center"
             />
+          </ScrollReveal>
+          <ScrollReveal delay={0.08} className="mx-auto mt-8 max-w-lg text-left">
+            <GoldQuoteForm branchSlug={BRANCH_SLUG} />
           </ScrollReveal>
           <ScrollReveal delay={0.1} className="mt-8 flex flex-wrap justify-center gap-3">
             <a href={`mailto:${contact}?subject=Demo%20Gungir`}>

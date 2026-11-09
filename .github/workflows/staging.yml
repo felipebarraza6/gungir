@@ -27,6 +27,8 @@ jobs:
       NEXT_TELEMETRY_DISABLED: "1"
       NEXT_PUBLIC_YGGDRA_API_BASE: https://api-staging.yggdra.cl/api
       NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+      NEXT_PUBLIC_GUNGIR_GROUP: gungir
+      NEXT_PUBLIC_GUNGIR_BRANCH_SLUG: casa-oro
     steps:
       - uses: actions/checkout@v4
 
