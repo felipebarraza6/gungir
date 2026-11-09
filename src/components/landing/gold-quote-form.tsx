@@ -28,6 +28,8 @@ type Props = {
 };
 
 export function GoldQuoteForm({ branchSlug }: Props) {
+  const slug =
+    branchSlug || process.env.NEXT_PUBLIC_GUNGIR_BRANCH_SLUG || "casa-oro";
   const reduce = useReducedMotion();
   const [metal, setMetal] = useState<QuotePreviewInput["metal"]>("AU");
   const [karat, setKarat] = useState(18);
@@ -41,8 +43,8 @@ export function GoldQuoteForm({ branchSlug }: Props) {
   const [submitMsg, setSubmitMsg] = useState<{ type: "ok" | "err"; text: string } | null>(null);
 
   const input = useMemo(
-    () => ({ metal, purity_karat: karat, weight_g: weight, slug: branchSlug }),
-    [metal, karat, weight, branchSlug],
+    () => ({ metal, purity_karat: karat, weight_g: weight, slug }),
+    [metal, karat, weight, slug],
   );
 
   useEffect(() => {
@@ -235,10 +237,9 @@ export function GoldQuoteForm({ branchSlug }: Props) {
         </label>
       </div>
 
-      {!branchSlug && (
+      {!slug && (
         <p className="mb-3 rounded-lg border border-warning/30 bg-warning/10 px-3 py-2 text-xs text-warning">
-          Falta <code>NEXT_PUBLIC_GUNGIR_BRANCH_SLUG</code> (ej. casa-oro). Sin slug el envío a
-          no se resuelve la sucursal.
+          Falta el slug de sucursal. Sin él el envío no resuelve la tienda.
         </p>
       )}
 
